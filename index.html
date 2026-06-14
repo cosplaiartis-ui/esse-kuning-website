@@ -137,7 +137,7 @@
 
                 <div class="flex items-center gap-x-3">
                     <!-- Telegram Button -->
-                    <a href="https://t.me/punchpop33" target="_blank" 
+                    <a href="https://t.me/punchpop33?text=Halo%20Admin%20Esse%20Kuning%2C%20saya%20tertarik%20bergabung%20ke%20Group%20VVIP.%20Mohon%20informasinya%20ya." target="_blank" 
                        class="hidden md:inline-flex items-center gap-x-2 px-5 py-2.5 text-sm font-semibold bg-white text-zinc-950 rounded-2xl hover:bg-yellow-300 transition-colors">
                         <i class="fab fa-telegram-plane"></i>
                         <span>Telegram</span>
@@ -161,7 +161,7 @@
             <a href="#join" class="mobile-nav-link text-white">Gabung Sekarang</a>
             
             <div class="pt-4 border-t border-white/10">
-                <a href="https://t.me/punchpop33" target="_blank"
+                <a href="https://t.me/punchpop33?text=Halo%20Admin%20Esse%20Kuning%2C%20saya%20tertarik%20bergabung%20ke%20Group%20VVIP.%20Mohon%20informasinya%20ya." target="_blank"
                    class="flex items-center justify-center gap-x-3 w-full py-4 bg-white text-zinc-950 font-semibold rounded-3xl">
                     <i class="fab fa-telegram-plane text-xl"></i>
                     <span>Buka Telegram</span>
@@ -195,7 +195,7 @@
                     <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                 </a>
                 
-                <a href="https://t.me/punchpop33" target="_blank"
+                <a href="https://t.me/punchpop33?text=Halo%20Admin%20Esse%20Kuning%2C%20saya%20tertarik%20bergabung%20ke%20Group%20VVIP.%20Mohon%20informasinya%20ya." target="_blank"
                    class="inline-flex items-center justify-center gap-x-3 px-8 py-4 border border-white/30 hover:bg-white/5 text-white font-semibold rounded-3xl transition-all text-lg">
                     <i class="fab fa-telegram-plane"></i>
                     <span>Gabung via Telegram</span>
@@ -465,7 +465,7 @@
                     </div>
 
                     <div class="mt-auto pt-8">
-                        <a href="https://t.me/punchpop33" target="_blank"
+                        <a href="https://t.me/punchpop33?text=Halo%20Admin%20Esse%20Kuning%2C%20saya%20sudah%20transfer%20ke%20BCA%206042976624.%20Mohon%20dicek%20dan%20diberikan%20invite%20linknya.%20Terima%20kasih!" target="_blank"
                            class="premium-btn flex w-full items-center justify-center gap-x-3 py-4 bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 text-zinc-950 font-bold rounded-2xl text-base transition">
                             <i class="fab fa-telegram-plane text-xl"></i>
                             <span>Konfirmasi via Telegram</span>
@@ -489,7 +489,7 @@
                 <div class="flex items-center gap-x-5 text-xs">
                     <span>Privacy Policy</span>
                     <span>Terms</span>
-                    <a href="https://t.me/punchpop33" class="hover:text-white">Hubungi Admin</a>
+                    <a href="https://t.me/punchpop33?text=Halo%20Admin%20Esse%20Kuning%2C%20saya%20tertarik%20bergabung%20ke%20Group%20VVIP.%20Mohon%20informasinya%20ya." class="hover:text-white">Hubungi Admin</a>
                 </div>
             </div>
         </div>
@@ -601,8 +601,12 @@
             }, 2800);
         }
 
-        // Plan selection - opens confirmation modal
+        // Plan selection - opens confirmation modal with pre-filled Telegram message
         function selectPlan(planName, price) {
+            const message = `Halo Admin, saya pilih paket ${planName} (Rp ${price.toLocaleString('id-ID')}). Sudah transfer ke BCA 6042976624. Mohon dicek dan diberikan invite linknya. Terima kasih!`;
+            const encodedMessage = encodeURIComponent(message);
+            const telegramLink = `https://t.me/punchpop33?text=${encodedMessage}`;
+
             const modalHTML = `
                 <div id="plan-modal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-6">
                     <div class="modal bg-zinc-900 border border-white/10 rounded-3xl max-w-md w-full p-8">
@@ -623,7 +627,7 @@
                         </div>
 
                         <div class="space-y-3">
-                            <a href="https://t.me/punchpop33" target="_blank"
+                            <a href="${telegramLink}" target="_blank"
                                class="flex items-center justify-center gap-x-3 w-full py-4 bg-yellow-400 hover:bg-yellow-300 text-zinc-950 font-bold rounded-2xl transition">
                                 <i class="fab fa-telegram-plane"></i>
                                 <span>Lanjutkan & Konfirmasi via Telegram</span>
@@ -667,8 +671,7 @@
             initMobileMenu();
             initSmoothScroll();
             
-            // Telegram link updated to t.me/punchpop33
-            console.log('%c[Esse Kuning] Landing page initialized with Telegram: t.me/punchpop33', 'color:#666');
+            console.log('%c[Esse Kuning] Landing page ready with pre-filled Telegram messages to t.me/punchpop33', 'color:#666');
         }
 
         window.onload = init;
