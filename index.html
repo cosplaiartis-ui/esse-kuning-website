@@ -107,8 +107,13 @@
             box-shadow: 0 10px 15px -3px rgb(234 179 8 / 0.3), 0 4px 6px -4px rgb(234 179 8 / 0.3);
         }
 
-        .stat-number {
-            font-variant-numeric: tabular-nums;
+        .option-btn {
+            transition: all 0.2s ease;
+        }
+        .option-btn.active {
+            background-color: #facc15;
+            color: #18181b;
+            border-color: #facc15;
         }
     </style>
 </head>
@@ -610,44 +615,74 @@
             }, 2800);
         }
 
-        // Plan selection - opens confirmation modal with improved pre-filled message
+        // Plan selection modal with interactive choices on the web
         function selectPlan(planName, price) {
-            const message = `Halo Admin,
-
-Saya pilih paket: ${planName}
-Pilihan pembayaran: BCA / QRIS
-Mau join: Sekarang / Nanti
-Kapan kira-kira bisa join?
-
-Mohon bantuannya ya. Terima kasih!`;
-            const encodedMessage = encodeURIComponent(message);
-            const telegramLink = `https://t.me/punchpop33?text=${encodedMessage}`;
+            let selectedPayment = 'BCA';
+            let selectedJoinTime = 'Sekarang';
+            let selectedWhen = '';
 
             const modalHTML = `
                 <div id="plan-modal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-6">
                     <div class="modal bg-zinc-900 border border-white/10 rounded-3xl max-w-md w-full p-8">
-                        <div class="flex justify-between items-start">
+                        <!-- Header -->
+                        <div class="flex justify-between items-start mb-6">
                             <div>
                                 <span class="text-xs tracking-widest text-yellow-400 font-bold">KONFIRMASI PILIHAN</span>
                                 <h3 class="text-3xl font-semibold mt-1">${planName}</h3>
-                                <div class="text-4xl font-bold mt-2">Rp ${price.toLocaleString('id-ID')}</div>
+                                <div class="text-4xl font-bold mt-1">Rp ${price.toLocaleString('id-ID')}</div>
                                 <div class="text-xs text-emerald-400">Lifetime Access</div>
                             </div>
-                            <button onclick="closeModal()" class="text-zinc-400 hover:text-white text-2xl">&times;</button>
+                            <button onclick="closeModal()" class="text-zinc-400 hover:text-white text-3xl leading-none">&times;</button>
                         </div>
 
-                        <div class="my-8 text-sm text-zinc-300 space-y-2.5">
-                            <div class="flex justify-between"><span>Durasi</span> <span class="font-medium text-white">Selamanya</span></div>
-                            <div class="flex justify-between"><span>Update</span> <span class="font-medium text-white">Unlimited</span></div>
-                            <div class="flex justify-between"><span>Metode</span> <span class="font-medium text-white">BCA / QRIS</span></div>
+                        <!-- Pilihan Pembayaran -->
+                        <div class="mb-6">
+                            <div class="text-sm font-semibold mb-3 text-zinc-300">Pilihan Pembayaran</div>
+                            <div class="flex gap-3">
+                                <button onclick="selectPaymentOption(this, 'BCA')" 
+                                        class="option-btn flex-1 py-3 rounded-2xl border border-white/20 text-sm font-medium active:bg-yellow-400 active:text-zinc-950 transition ${selectedPayment === 'BCA' ? 'active' : ''}">
+                                    BCA
+                                </button>
+                                <button onclick="selectPaymentOption(this, 'QRIS')" 
+                                        class="option-btn flex-1 py-3 rounded-2xl border border-white/20 text-sm font-medium active:bg-yellow-400 active:text-zinc-950 transition">
+                                    QRIS
+                                </button>
+                            </div>
                         </div>
 
-                        <div class="space-y-3">
-                            <a href="${telegramLink}" target="_blank"
-                               class="flex items-center justify-center gap-x-3 w-full py-4 bg-yellow-400 hover:bg-yellow-300 text-zinc-950 font-bold rounded-2xl transition">
+                        <!-- Mau Join -->
+                        <div class="mb-6">
+                            <div class="text-sm font-semibold mb-3 text-zinc-300">Mau Join Kapan?</div>
+                            <div class="flex gap-3">
+                                <button onclick="selectJoinTimeOption(this, 'Sekarang')" 
+                                        class="option-btn flex-1 py-3 rounded-2xl border border-white/20 text-sm font-medium active:bg-yellow-400 active:text-zinc-950 transition active">
+                                    Sekarang
+                                </button>
+                                <button onclick="selectJoinTimeOption(this, 'Nanti')" 
+                                        class="option-btn flex-1 py-3 rounded-2xl border border-white/20 text-sm font-medium active:bg-yellow-400 active:text-zinc-950 transition">
+                                    Nanti
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Kapan (hanya muncul jika pilih Nanti) -->
+                        <div id="when-section" class="hidden mb-6">
+                            <div class="text-sm font-semibold mb-3 text-zinc-300">Kapan kira-kira?</div>
+                            <select id="when-select" class="w-full bg-zinc-950 border border-white/20 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:border-yellow-400">
+                                <option value="Hari ini">Hari ini</option>
+                                <option value="Besok">Besok</option>
+                                <option value="Minggu ini">Minggu ini</option>
+                                <option value="Minggu depan">Minggu depan</option>
+                                <option value="Belum tahu">Belum tahu</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-3 mt-8">
+                            <button onclick="sendToTelegram('${planName}', ${price})"
+                                    class="flex items-center justify-center gap-x-3 w-full py-4 bg-yellow-400 hover:bg-yellow-300 text-zinc-950 font-bold rounded-2xl transition">
                                 <i class="fab fa-telegram-plane"></i>
-                                <span>Lanjutkan & Konfirmasi via Telegram</span>
-                            </a>
+                                <span>Lanjutkan via Telegram</span>
+                            </button>
                             <button onclick="closeModal()" 
                                     class="w-full py-3.5 text-sm text-zinc-400 hover:text-white transition">Batal</button>
                         </div>
@@ -656,7 +691,10 @@ Mohon bantuannya ya. Terima kasih!`;
             `;
             
             document.body.insertAdjacentHTML('beforeend', modalHTML);
-            
+
+            // Store selected values globally for this modal
+            window.currentPlan = { planName, price, selectedPayment: 'BCA', selectedJoinTime: 'Sekarang' };
+
             // Close on outside click
             const modal = document.getElementById('plan-modal');
             modal.addEventListener('click', function handler(e) {
@@ -665,6 +703,56 @@ Mohon bantuannya ya. Terima kasih!`;
                     modal.removeEventListener('click', handler);
                 }
             });
+
+            // Show/hide when section based on join time
+            window.selectJoinTimeOption = function(btn, value) {
+                document.querySelectorAll('#plan-modal .option-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                window.currentPlan.selectedJoinTime = value;
+                
+                const whenSection = document.getElementById('when-section');
+                if (value === 'Nanti') {
+                    whenSection.classList.remove('hidden');
+                    whenSection.classList.add('block');
+                } else {
+                    whenSection.classList.remove('block');
+                    whenSection.classList.add('hidden');
+                }
+            };
+
+            window.selectPaymentOption = function(btn, value) {
+                // Deselect all in payment group
+                const paymentBtns = btn.parentElement.querySelectorAll('.option-btn');
+                paymentBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                window.currentPlan.selectedPayment = value;
+            };
+        }
+
+        // Function to build message and open Telegram
+        function sendToTelegram(planName, price) {
+            const plan = window.currentPlan || { selectedPayment: 'BCA', selectedJoinTime: 'Sekarang' };
+            
+            let message = `Halo Admin,
+
+Saya pilih paket: ${planName}
+Pilihan pembayaran: ${plan.selectedPayment}
+Mau join: ${plan.selectedJoinTime}`;
+
+            if (plan.selectedJoinTime === 'Nanti') {
+                const whenSelect = document.getElementById('when-select');
+                const whenValue = whenSelect ? whenSelect.value : 'Belum tahu';
+                message += `\nKapan kira-kira: ${whenValue}`;
+            }
+
+            message += `\n\nMohon bantuannya ya. Terima kasih!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const telegramLink = `https://t.me/punchpop33?text=${encodedMessage}`;
+            
+            window.open(telegramLink, '_blank');
+            closeModal();
         }
 
         function closeModal() {
@@ -672,7 +760,7 @@ Mohon bantuannya ya. Terima kasih!`;
             if (modal) modal.remove();
         }
 
-        // Keyboard escape for modal
+        // Keyboard escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 const modal = document.getElementById('plan-modal');
@@ -680,14 +768,12 @@ Mohon bantuannya ya. Terima kasih!`;
             }
         });
 
-        // Initialize everything
         function init() {
             initializeTailwind();
             initNavbar();
             initMobileMenu();
             initSmoothScroll();
-            
-            console.log('%c[Esse Kuning] Landing page updated with flexible pre-filled messages + Testimoni link', 'color:#666');
+            console.log('%c[Esse Kuning] Web now has interactive join time & payment choices in modal', 'color:#666');
         }
 
         window.onload = init;
