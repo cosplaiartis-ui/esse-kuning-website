@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esse Kuning | VVIP Premium Group - Fantasi Visual Realistis</title>
+    <meta name="description" content="Group VVIP Esse Kuning menawarkan pengalaman berfantasi terbaik dengan visual AI realistis dan eksklusif. Foto, video, GIF premium deepfake artis Indonesia, scandal, dan cerita dewasa eksklusif. Lifetime access.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+        
+        :root {
+            --gold: #facc15;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-serif {
+            font-family: 'Playfair Display', Georgia, serif;
+            letter-spacing: -0.02em;
+        }
+
+        .premium-gradient {
+            background: linear-gradient(135deg, #18181b 0%, #27251f 100%);
+        }
+
+        .gold-text {
+            color: #facc15;
+        }
+
+        .section-header {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(to right, #facc15, transparent);
+        }
+
+        .nav-link {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link:hover {
+            color: #facc15;
+            transform: translateY(-1px);
+        }
+
+        .premium-card {
+            transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), 
+                       box-shadow 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+            background: #18181b;
+        }
+        
+        .premium-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .benefit-item {
+            transition: all 0.2s ease;
+        }
+
+        .price-highlight {
+            background: linear-gradient(90deg, #facc15, #eab308);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .nav-scrolled {
+            background-color: rgba(24, 24, 27, 0.95);
+            backdrop-filter: blur(12px);
+        }
+
+        .floating-btn {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+        }
+
+        .modal {
+            animation: modalPop 0.3s ease forwards;
+        }
+
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .premium-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .premium-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(234 179 8 / 0.3), 0 4px 6px -4px rgb(234 179 8 / 0.3);
+        }
+
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-lg border-b border-white/10 transition-all">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="w-9 h-9 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-xl flex items-center justify-center shadow-inner">
+                        <span class="text-zinc-950 font-bold text-3xl tracking-tighter">E</span>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-2xl tracking-tight">Esse Kuning</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#benefits" class="nav-link text-zinc-300 hover:text-white">Manfaat</a>
+                    <a href="#pricing" class="nav-link text-zinc-300 hover:text-white">Harga</a>
+                    <a href="#testimonials" class="nav-link text-zinc-300 hover:text-white">Testimoni</a>
+                    <a href="#join" class="nav-link text-zinc-300 hover:text-white">Gabung</a>
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                    <!-- Telegram Button -->
+                    <a href="https://t.me/essekuning_vvip" target="_blank" 
+                       class="hidden md:inline-flex items-center gap-x-2 px-5 py-2.5 text-sm font-semibold bg-white text-zinc-950 rounded-2xl hover:bg-yellow-300 transition-colors">
+                        <i class="fab fa-telegram-plane"></i>
+                        <span>Telegram</span>
+                    </a>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden w-10 h-10 flex items-center justify-center text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-zinc-950/95 pt-20">
+        <div class="px-6 py-8 flex flex-col gap-y-6 text-lg font-medium">
+            <a href="#benefits" class="mobile-nav-link text-white">Manfaat</a>
+            <a href="#pricing" class="mobile-nav-link text-white">Harga</a>
+            <a href="#testimonials" class="mobile-nav-link text-white">Testimoni</a>
+            <a href="#join" class="mobile-nav-link text-white">Gabung Sekarang</a>
+            
+            <div class="pt-4 border-t border-white/10">
+                <a href="https://t.me/essekuning_vvip" target="_blank"
+                   class="flex items-center justify-center gap-x-3 w-full py-4 bg-white text-zinc-950 font-semibold rounded-3xl">
+                    <i class="fab fa-telegram-plane text-xl"></i>
+                    <span>Buka Telegram</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="pt-20 min-h-[100dvh] flex items-center premium-gradient relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-3xl bg-white/5 border border-white/10 mb-6">
+                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <span class="text-sm font-medium text-emerald-400">Lifetime Access • Update Selalu Fresh</span>
+            </div>
+
+            <h1 class="text-7xl md:text-8xl font-semibold tracking-tighter heading-serif mb-4">
+                ESSE KUNING
+            </h1>
+            <p class="text-3xl md:text-4xl font-light text-white/90 tracking-tight mb-3">Group VVIP Premium</p>
+            
+            <p class="max-w-2xl mx-auto text-xl text-zinc-400 mb-10">
+                Pengalaman berfantasi terbaik dengan visual yang <span class="text-yellow-400 font-medium">realistis dan logis</span>.<br>
+                Deepfake artis Indonesia berkualitas premium.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#pricing" 
+                   class="premium-btn group inline-flex items-center justify-center gap-x-3 px-8 py-4 bg-yellow-400 hover:bg-yellow-300 text-zinc-950 text-lg font-semibold rounded-3xl transition-all active:scale-[0.985]">
+                    <span>Lihat Pricelist</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                
+                <a href="https://t.me/essekuning_vvip" target="_blank"
+                   class="inline-flex items-center justify-center gap-x-3 px-8 py-4 border border-white/30 hover:bg-white/5 text-white font-semibold rounded-3xl transition-all text-lg">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span>Gabung via Telegram</span>
+                </a>
+            </div>
+
+            <div class="mt-12 flex items-center justify-center gap-x-8 text-sm">
+                <div class="flex items-center gap-x-2 text-zinc-400">
+                    <i class="fas fa-check-circle text-emerald-400"></i>
+                    <span>Realistis</span>
+                </div>
+                <div class="flex items-center gap-x-2 text-zinc-400">
+                    <i class="fas fa-check-circle text-emerald-400"></i>
+                    <span>Eksklusif</span>
+                </div>
+                <div class="flex items-center gap-x-2 text-zinc-400">
+                    <i class="fas fa-check-circle text-emerald-400"></i>
+                    <span>Lifetime</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subtle bottom gradient -->
+        <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-zinc-950 to-transparent"></div>
+    </header>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="max-w-6xl mx-auto px-6 py-20">
+        <div class="text-center mb-14">
+            <span class="text-yellow-400 text-sm font-semibold tracking-[3px] uppercase">Mengapa Memilih Kami</span>
+            <h2 class="text-5xl font-semibold tracking-tighter mt-3">Manfaat Group VVIP Esse Kuning</h2>
+            <p class="mt-4 max-w-md mx-auto text-zinc-400">Kami menghadirkan fantasi dengan kualitas terbaik dan update yang tidak pernah membosankan.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Benefit 1 -->
+            <div class="premium-card border border-white/10 rounded-3xl p-8">
+                <div class="w-12 h-12 flex items-center justify-center bg-yellow-400/10 text-yellow-400 rounded-2xl mb-6">
+                    <i class="fas fa-images text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-4">Fake Artis Premium</h3>
+                <p class="text-zinc-400 leading-relaxed">Koleksi foto, video, dan GIF dengan editan kualitas premium & exclusive. Kategori nama artis lengkap memudahkan Anda menemukan fantasi favorit dengan cepat.</p>
+                <div class="mt-6 flex flex-wrap gap-2">
+                    <span class="text-xs px-3 py-1 bg-white/5 rounded-full">Realistis</span>
+                    <span class="text-xs px-3 py-1 bg-white/5 rounded-full">High Detail</span>
+                    <span class="text-xs px-3 py-1 bg-white/5 rounded-full">Update Fresh</span>
+                </div>
+            </div>
+
+            <!-- Benefit 2 -->
+            <div class="premium-card border border-white/10 rounded-3xl p-8">
+                <div class="w-12 h-12 flex items-center justify-center bg-yellow-400/10 text-yellow-400 rounded-2xl mb-6">
+                    <i class="fas fa-video text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-4">Scandal & Viral Content</h3>
+                <p class="text-zinc-400 leading-relaxed">Berisi foto dan video bokep viral, lokal, JAV, dan barat. Selalu fresh dan terus bertambah setiap hari.</p>
+            </div>
+
+            <!-- Benefit 3 -->
+            <div class="premium-card border border-white/10 rounded-3xl p-8">
+                <div class="w-12 h-12 flex items-center justify-center bg-yellow-400/10 text-yellow-400 rounded-2xl mb-6">
+                    <i class="fas fa-magic text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-4">Free Private Deepfake Edit</h3>
+                <p class="text-zinc-400 leading-relaxed">Gratis edit private video deepfake untuk member baru (1x untuk VVIP, 3x untuk VVIP+). Sesuaikan sesuai keinginan Anda.</p>
+            </div>
+
+            <!-- Benefit 4 -->
+            <div class="premium-card border border-white/10 rounded-3xl p-8">
+                <div class="w-12 h-12 flex items-center justify-center bg-yellow-400/10 text-yellow-400 rounded-2xl mb-6">
+                    <i class="fas fa-book text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-4">Cerita Dewasa Eksklusif</h3>
+                <p class="text-zinc-400 leading-relaxed">Group kumpulan cerita sex artis Indonesia berkualitas tinggi. Hanya tersedia di tier VVIP+ (Free Request 1x).</p>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <div class="inline-flex items-center gap-x-2 text-sm bg-white/5 px-5 py-3 rounded-2xl border border-white/10">
+                <i class="fas fa-infinity text-yellow-400"></i>
+                <span class="font-medium">Lifetime Payment — Akses Selamanya</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="bg-zinc-900 py-20 border-y border-white/10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-yellow-400 text-sm font-semibold tracking-[3px] uppercase">Pilih Paket Anda</span>
+                <h2 class="text-5xl font-semibold tracking-tighter mt-3">Pricelist Group VVIP</h2>
+                <p class="text-zinc-400 mt-3">Pembayaran sekali bayar, akses selamanya. Update terus-menerus.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- VVIP Card -->
+                <div class="premium-card border border-white/10 rounded-3xl p-9 flex flex-col">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="px-4 py-1 text-xs font-bold tracking-widest bg-white/10 text-white rounded-full">POPULER</span>
+                                <h3 class="text-4xl font-semibold mt-4">VVIP</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-5xl font-bold tracking-tighter">160k</div>
+                                <div class="text-xs text-zinc-400 -mt-1">Lifetime</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="my-8 flex-1">
+                        <ul class="space-y-3.5 text-sm">
+                            <li class="flex gap-x-3"><i class="fas fa-check text-emerald-400 mt-1"></i> <span>Group Fake Artis (foto, video, GIF premium)</span></li>
+                            <li class="flex gap-x-3"><i class="fas fa-check text-emerald-400 mt-1"></i> <span>Group Scandal (viral, lokal, JAV, barat)</span></li>
+                            <li class="flex gap-x-3"><i class="fas fa-check text-emerald-400 mt-1"></i> <span><strong>1x FREE EDIT</strong> private video deepfake</span></li>
+                            <li class="flex gap-x-3"><i class="fas fa-check text-emerald-400 mt-1"></i> <span>Update fresh setiap hari</span></li>
+                            <li class="flex gap-x-3"><i class="fas fa-check text-emerald-400 mt-1"></i> <span>Kategori artis lengkap & mudah dicari</span></li>
+                        </ul>
+                    </div>
+
+                    <button onclick="selectPlan('VVIP', 160000)"
+                            class="mt-auto w-full py-4 rounded-2xl bg-white text-zinc-950 font-semibold hover:bg-yellow-300 active:bg-yellow-400 transition flex items-center justify-center gap-x-2">
+                        <span>Pilih Paket VVIP</span>
+                    </button>
+                </div>
+
+                <!-- VVIP+ Card -->
+                <div class="premium-card border-2 border-yellow-400/70 rounded-3xl p-9 flex flex-col relative">
+                    <div class="absolute -top-3 right-6 bg-yellow-400 text-zinc-950 text-xs font-bold px-4 py-1 rounded-full tracking-wider shadow">RECOMMENDED</div>
+                    
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="px-4 py-1 text-xs font-bold tracking-widest bg-yellow-400 text-zinc-950 rounded-full">BEST VALUE</span>
+                                <h3 class="text-4xl font-semibold mt-4">VVIP+</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-5xl font-bold tracking-tighter price-highlight">199k</div>
+                                <div class="text-xs text-zinc-400 -mt-1">Lifetime</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="my-8 flex-1">
+                        <ul class="space-y-3.5 text-sm">
+                            <li class="flex gap-x-3"><i class="fas fa-check text-emerald-400 mt-1"></i> <span>Semua benefit VVIP</span></li>
+                            <li class="flex gap-x-3"><i class="fas fa-check text-emerald-400 mt-1"></i> <span><strong>3x FREE EDIT</strong> private video deepfake</span></li>
+                            <li class="flex gap-x-3"><i class="fas fa-check text-emerald-400 mt-1"></i> <span><strong>1x FREE REQUEST</strong> cerita sex artis/private</span></li>
+                            <li class="flex gap-x-3"><i class="fas fa-check text-emerald-400 mt-1"></i> <span>Group Cerita Dewasa Artis Indonesia</span></li>
+                            <li class="flex gap-x-3"><i class="fas fa-check text-emerald-400 mt-1"></i> <span>Prioritas update & request</span></li>
+                        </ul>
+                    </div>
+
+                    <button onclick="selectPlan('VVIP+', 199000)"
+                            class="mt-auto w-full py-4 rounded-2xl bg-yellow-400 hover:bg-yellow-300 text-zinc-950 font-semibold transition flex items-center justify-center gap-x-2">
+                        <span>Pilih Paket VVIP+ • Best Value</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="max-w-6xl mx-auto px-6 py-20">
+        <div class="text-center mb-12">
+            <span class="text-yellow-400 text-sm font-semibold tracking-[3px] uppercase">Real Member</span>
+            <h2 class="text-5xl font-semibold tracking-tighter mt-3">Apa Kata Klien Kami</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="premium-card border border-white/10 rounded-3xl p-7">
+                <div class="flex gap-x-1 text-yellow-400 mb-4">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-zinc-300 leading-relaxed">“Kualitas editan deepfake-nya juara banget. Sangat realistis, gerakan natural, dan update-nya selalu fresh. Worth it banget!”</p>
+                <div class="mt-6 text-sm">
+                    <span class="font-semibold">— R***</span>
+                    <span class="text-zinc-500"> • Member VVIP+</span>
+                </div>
+            </div>
+
+            <div class="premium-card border border-white/10 rounded-3xl p-7">
+                <div class="flex gap-x-1 text-yellow-400 mb-4">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="text-zinc-300 leading-relaxed">“Cerita sex-nya detail dan enak dibaca. Request private juga langsung diproses. Pelayanan admin responsif sekali.”</p>
+                <div class="mt-6 text-sm">
+                    <span class="font-semibold">— A***</span>
+                    <span class="text-zinc-500"> • Member VVIP</span>
+                </div>
+            </div>
+
+            <div class="premium-card border border-white/10 rounded-3xl p-7">
+                <div class="flex gap-x-1 text-yellow-400 mb-4">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-zinc-300 leading-relaxed">“Scandal collection-nya lengkap dan kualitasnya tinggi. Group ini beda level dibanding yang lain. Highly recommended!”</p>
+                <div class="mt-6 text-sm">
+                    <span class="font-semibold">— D***</span>
+                    <span class="text-zinc-500"> • Member VVIP+</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join / Payment Section -->
+    <section id="join" class="max-w-4xl mx-auto px-6 py-16">
+        <div class="text-center mb-10">
+            <h2 class="text-4xl font-semibold tracking-tight">Siap Bergabung?</h2>
+            <p class="text-zinc-400 mt-2">Pilih paket, lakukan pembayaran, dan konfirmasi ke admin.</p>
+        </div>
+
+        <div class="premium-card border border-white/10 rounded-3xl p-9 md:p-12">
+            <div class="grid md:grid-cols-5 gap-y-8 gap-x-8">
+                <!-- Steps -->
+                <div class="md:col-span-3 space-y-8">
+                    <div class="flex gap-x-5">
+                        <div class="w-9 h-9 flex-shrink-0 rounded-2xl bg-yellow-400/10 text-yellow-400 flex items-center justify-center font-mono text-xl font-bold">1</div>
+                        <div>
+                            <div class="font-semibold text-lg">Pilih Paket</div>
+                            <div class="text-sm text-zinc-400 mt-1">Pilih VVIP (160k) atau VVIP+ (199k) sesuai kebutuhan Anda.</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-5">
+                        <div class="w-9 h-9 flex-shrink-0 rounded-2xl bg-yellow-400/10 text-yellow-400 flex items-center justify-center font-mono text-xl font-bold">2</div>
+                        <div>
+                            <div class="font-semibold text-lg">Transfer Pembayaran</div>
+                            <div class="text-sm text-zinc-400 mt-1">Transfer ke rekening BCA di bawah ini.</div>
+                            
+                            <div class="mt-4 p-4 bg-zinc-950 border border-white/10 rounded-2xl">
+                                <div class="text-xs text-zinc-500 mb-1">BANK CENTRAL ASIA (BCA)</div>
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <div id="account-number" class="font-mono text-2xl font-semibold tracking-widest">6042976624</div>
+                                        <div class="text-sm text-zinc-400">a.n. Admin Esse Kuning</div>
+                                    </div>
+                                    <button onclick="copyAccountNumber()" 
+                                            class="px-4 py-2 text-xs font-medium bg-white/5 hover:bg-white/10 active:bg-white/20 rounded-xl flex items-center gap-x-2 transition">
+                                        <i class="fas fa-copy"></i>
+                                        <span>Copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-5">
+                        <div class="w-9 h-9 flex-shrink-0 rounded-2xl bg-yellow-400/10 text-yellow-400 flex items-center justify-center font-mono text-xl font-bold">3</div>
+                        <div>
+                            <div class="font-semibold text-lg">Konfirmasi ke Admin</div>
+                            <div class="text-sm text-zinc-400 mt-1.5">Setelah transfer, segera konfirmasi ke admin Telegram dengan bukti transfer. Admin akan memberikan invite link group.</div>
+                            
+                            <div class="mt-3 text-xs px-4 py-3 bg-red-950/40 border border-red-900/60 text-red-400 rounded-2xl">
+                                <strong>Peringatan:</strong> Hanya read pesan adalah pelanggaran berat dengan hukuman blokir permanen.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR / Contact -->
+                <div class="md:col-span-2 bg-zinc-950 border border-white/10 rounded-3xl p-7 flex flex-col">
+                    <div class="text-center">
+                        <div class="mx-auto w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-4">
+                            <i class="fas fa-qrcode text-4xl text-yellow-400"></i>
+                        </div>
+                        <div class="font-semibold">QRIS via Admin</div>
+                        <p class="text-xs text-zinc-400 mt-1">Atau gunakan QRIS. Hubungi admin untuk QRIS.</p>
+                    </div>
+
+                    <div class="mt-auto pt-8">
+                        <a href="https://t.me/essekuning_vvip" target="_blank"
+                           class="premium-btn flex w-full items-center justify-center gap-x-3 py-4 bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 text-zinc-950 font-bold rounded-2xl text-base transition">
+                            <i class="fab fa-telegram-plane text-xl"></i>
+                            <span>Konfirmasi via Telegram</span>
+                        </a>
+                        <p class="text-center text-[10px] text-zinc-500 mt-3">Respon admin biasanya cepat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-zinc-950">
+        <div class="max-w-6xl mx-auto px-6 py-10 text-sm">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-y-4 text-zinc-400">
+                <div>
+                    © 2026 Esse Kuning. All rights reserved.<br>
+                    <span class="text-xs">Premium Fantasy Content • For 18+ only</span>
+                </div>
+                
+                <div class="flex items-center gap-x-5 text-xs">
+                    <span>Privacy Policy</span>
+                    <span>Terms</span>
+                    <a href="https://t.me/essekuning_vvip" class="hover:text-white">Hubungi Admin</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-zinc-900 border border-white/20 text-white px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-x-3 text-sm">
+        <i class="fas fa-check-circle text-emerald-400"></i>
+        <span id="toast-text"></span>
+    </div>
+
+    <script>
+        // Tailwind Script
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#facc15');
+        }
+
+        // Navbar scroll effect
+        function initNavbar() {
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('nav-scrolled', 'shadow-xl');
+                } else {
+                    navbar.classList.remove('nav-scrolled', 'shadow-xl');
+                }
+            });
+        }
+
+        // Mobile Menu
+        function initMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                const icon = btn.querySelector('i');
+                if (menu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+
+            // Close mobile menu when clicking links
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    btn.querySelector('i').classList.remove('fa-times');
+                    btn.querySelector('i').classList.add('fa-bars');
+                });
+            });
+        }
+
+        // Smooth scroll for anchor links
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        const offset = 80;
+                        const bodyRect = document.body.getBoundingClientRect().top;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition - bodyRect - offset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Copy Account Number
+        function copyAccountNumber() {
+            const accountEl = document.getElementById('account-number');
+            const text = accountEl.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Nomor rekening berhasil disalin!');
+            }).catch(() => {
+                // Fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast('Nomor rekening berhasil disalin!');
+            });
+        }
+
+        // Toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastText = document.getElementById('toast-text');
+            
+            toastText.textContent = message;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+            
+            setTimeout(() => {
+                toast.classList.remove('flex');
+                toast.classList.add('hidden');
+            }, 2800);
+        }
+
+        // Plan selection - opens confirmation modal
+        function selectPlan(planName, price) {
+            const modalHTML = `
+                <div id="plan-modal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-6">
+                    <div class="modal bg-zinc-900 border border-white/10 rounded-3xl max-w-md w-full p-8">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-xs tracking-widest text-yellow-400 font-bold">KONFIRMASI PILIHAN</span>
+                                <h3 class="text-3xl font-semibold mt-1">${planName}</h3>
+                                <div class="text-4xl font-bold mt-2">Rp ${price.toLocaleString('id-ID')}</div>
+                                <div class="text-xs text-emerald-400">Lifetime Access</div>
+                            </div>
+                            <button onclick="closeModal()" class="text-zinc-400 hover:text-white text-2xl">&times;</button>
+                        </div>
+
+                        <div class="my-8 text-sm text-zinc-300 space-y-2.5">
+                            <div class="flex justify-between"><span>Durasi</span> <span class="font-medium text-white">Selamanya</span></div>
+                            <div class="flex justify-between"><span>Update</span> <span class="font-medium text-white">Unlimited</span></div>
+                            <div class="flex justify-between"><span>Metode</span> <span class="font-medium text-white">BCA / QRIS</span></div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <a href="https://t.me/essekuning_vvip" target="_blank"
+                               class="flex items-center justify-center gap-x-3 w-full py-4 bg-yellow-400 hover:bg-yellow-300 text-zinc-950 font-bold rounded-2xl transition">
+                                <i class="fab fa-telegram-plane"></i>
+                                <span>Lanjutkan & Konfirmasi via Telegram</span>
+                            </a>
+                            <button onclick="closeModal()" 
+                                    class="w-full py-3.5 text-sm text-zinc-400 hover:text-white transition">Batal</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            
+            // Close on outside click
+            const modal = document.getElementById('plan-modal');
+            modal.addEventListener('click', function handler(e) {
+                if (e.target === modal) {
+                    closeModal();
+                    modal.removeEventListener('click', handler);
+                }
+            });
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('plan-modal');
+            if (modal) modal.remove();
+        }
+
+        // Keyboard escape for modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('plan-modal');
+                if (modal) modal.remove();
+            }
+        });
+
+        // Initialize everything
+        function init() {
+            initializeTailwind();
+            initNavbar();
+            initMobileMenu();
+            initSmoothScroll();
+            
+            // Optional: Change Telegram link here if needed
+            // const TELEGRAM_LINK = 'https://t.me/YOUR_ACTUAL_USERNAME';
+            console.log('%c[Esse Kuning] Landing page initialized. Update Telegram link if needed.', 'color:#666');
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
