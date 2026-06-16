@@ -615,11 +615,10 @@
             }, 2800);
         }
 
-        // Plan selection modal with interactive choices on the web
+        // Plan selection modal with interactive choices + Tidak Berminat option
         function selectPlan(planName, price) {
             let selectedPayment = 'BCA';
             let selectedJoinTime = 'Sekarang';
-            let selectedWhen = '';
 
             const modalHTML = `
                 <div id="plan-modal" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-6">
@@ -640,7 +639,7 @@
                             <div class="text-sm font-semibold mb-3 text-zinc-300">Pilihan Pembayaran</div>
                             <div class="flex gap-3">
                                 <button onclick="selectPaymentOption(this, 'BCA')" 
-                                        class="option-btn flex-1 py-3 rounded-2xl border border-white/20 text-sm font-medium active:bg-yellow-400 active:text-zinc-950 transition ${selectedPayment === 'BCA' ? 'active' : ''}">
+                                        class="option-btn flex-1 py-3 rounded-2xl border border-white/20 text-sm font-medium active:bg-yellow-400 active:text-zinc-950 transition active">
                                     BCA
                                 </button>
                                 <button onclick="selectPaymentOption(this, 'QRIS')" 
@@ -683,8 +682,14 @@
                                 <i class="fab fa-telegram-plane"></i>
                                 <span>Lanjutkan via Telegram</span>
                             </button>
-                            <button onclick="closeModal()" 
-                                    class="w-full py-3.5 text-sm text-zinc-400 hover:text-white transition">Batal</button>
+
+                            <!-- Tidak Berminat Option -->
+                            <div class="text-center pt-2">
+                                <button onclick="notInterested()" 
+                                        class="text-xs text-zinc-500 hover:text-zinc-300 underline transition">
+                                    Tidak berminat saat ini
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -692,10 +697,8 @@
             
             document.body.insertAdjacentHTML('beforeend', modalHTML);
 
-            // Store selected values globally for this modal
             window.currentPlan = { planName, price, selectedPayment: 'BCA', selectedJoinTime: 'Sekarang' };
 
-            // Close on outside click
             const modal = document.getElementById('plan-modal');
             modal.addEventListener('click', function handler(e) {
                 if (e.target === modal) {
@@ -704,9 +707,10 @@
                 }
             });
 
-            // Show/hide when section based on join time
             window.selectJoinTimeOption = function(btn, value) {
-                document.querySelectorAll('#plan-modal .option-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('#plan-modal .option-btn').forEach(b => {
+                    if (b.parentElement.children.length === 2) b.classList.remove('active');
+                });
                 btn.classList.add('active');
                 
                 window.currentPlan.selectedJoinTime = value;
@@ -722,7 +726,6 @@
             };
 
             window.selectPaymentOption = function(btn, value) {
-                // Deselect all in payment group
                 const paymentBtns = btn.parentElement.querySelectorAll('.option-btn');
                 paymentBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
@@ -730,7 +733,6 @@
             };
         }
 
-        // Function to build message and open Telegram
         function sendToTelegram(planName, price) {
             const plan = window.currentPlan || { selectedPayment: 'BCA', selectedJoinTime: 'Sekarang' };
             
@@ -755,12 +757,25 @@ Mau join: ${plan.selectedJoinTime}`;
             closeModal();
         }
 
+        // Tidak Berminat function
+        function notInterested() {
+            const message = `Halo Admin,
+
+Saat ini saya belum berminat bergabung ke Group VVIP Esse Kuning.
+
+Terima kasih.`;
+            const encodedMessage = encodeURIComponent(message);
+            const telegramLink = `https://t.me/punchpop33?text=${encodedMessage}`;
+            
+            window.open(telegramLink, '_blank');
+            closeModal();
+        }
+
         function closeModal() {
             const modal = document.getElementById('plan-modal');
             if (modal) modal.remove();
         }
 
-        // Keyboard escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 const modal = document.getElementById('plan-modal');
@@ -773,7 +788,7 @@ Mau join: ${plan.selectedJoinTime}`;
             initNavbar();
             initMobileMenu();
             initSmoothScroll();
-            console.log('%c[Esse Kuning] Web now has interactive join time & payment choices in modal', 'color:#666');
+            console.log('%c[Esse Kuning] Added "Tidak Berminat" option in modal', 'color:#666');
         }
 
         window.onload = init;
